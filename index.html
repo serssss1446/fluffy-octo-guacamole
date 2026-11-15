@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#0d1511">
+<title>Dolphy TV</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header>
+    <div class="brand"><span class="logo">D</span><div><h1>DOLPHY TV</h1><small>UNIVERSAL IR REMOTE</small></div></div>
+    <span class="version">v1.2</span>
+  </header>
+
+  <section class="status-card">
+    <span class="pulse"></span><div><b>حالة مرسل IR</b><p id="irStatus">جارٍ فحص التوافق...</p></div>
+  </section>
+
+  <section class="section">
+    <label for="brand">ماركة التلفزيون</label>
+    <select id="brand">
+      <option>اختر الماركة</option><option>Samsung</option><option>LG</option>
+      <option>Sony</option><option>TCL</option><option>Hisense</option>
+      <option>Philips</option><option>Toshiba</option><option>Panasonic</option>
+      <option>Xiaomi</option><option>Sharp</option><option>JVC</option>
+      <option>Hitachi</option><option>Other</option>
+    </select>
+  </section>
+
+  <section class="remote">
+    <div class="remote-head"><span>جهاز التحكم</span><span class="dot"></span></div>
+    <button class="power" onclick="send('power')" aria-label="Power">⏻ <small>تشغيل / إطفاء</small></button>
+    <div class="volume">
+      <button onclick="send('vol_up')">＋<small>رفع الصوت</small></button>
+      <button onclick="send('mute')">◖<small>كتم</small></button>
+      <button onclick="send('vol_down')">−<small>خفض الصوت</small></button>
+    </div>
+    <div class="channels">
+      <button onclick="send('ch_up')">CH ＋<small>القناة التالية</small></button>
+      <button onclick="send('ch_down')">CH −<small>القناة السابقة</small></button>
+    </div>
+  </section>
+
+  <section class="section codes">
+    <div class="section-title"><h2>أكواد جهازك</h2><span>NEC · 38 kHz</span></div>
+    <p class="hint">أدخل كود NEC من 8 خانات Hex لكل زر. الأكواد تختلف حسب موديل التلفزيون والريموت.</p>
+    <div class="code-row"><label>Power</label><input id="power" maxlength="8" placeholder="مثال: 20DF10EF"></div>
+    <div class="code-row"><label>Volume +</label><input id="vol_up" maxlength="8" placeholder="8 خانات Hex"></div>
+    <div class="code-row"><label>Volume −</label><input id="vol_down" maxlength="8" placeholder="8 خانات Hex"></div>
+    <div class="code-row"><label>Channel +</label><input id="ch_up" maxlength="8" placeholder="8 خانات Hex"></div>
+    <div class="code-row"><label>Channel −</label><input id="ch_down" maxlength="8" placeholder="8 خانات Hex"></div>
+    <div class="code-row"><label>Mute</label><input id="mute" maxlength="8" placeholder="8 خانات Hex"></div>
+    <button class="save" onclick="saveCodes()">حفظ الأكواد على الهاتف</button>
+  </section>
+
+  <footer>Dolphy TV · يعمل مع مرسل IR متوافق فقط</footer>
+</main>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
